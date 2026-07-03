@@ -1,11 +1,11 @@
-# 💳 Financial Transactions Performance Dashboard
+#  Financial Transactions Performance Dashboard
 ### End-to-End Data Analytics Project | Python • MySQL • Power BI
 
-![Dashboard](assets/dashboard.png)
+![Dashboard](financial_transactions/Dashboard)
 
 ---
 
-## 📌 Project Overview
+## Project Overview
 
 This project demonstrates a complete data analytics pipeline built on a real-world-style financial transactions dataset with **100,000 rows** of intentionally dirty data. The goal was to clean, transform, store, query, and visualise the data to surface meaningful business insights — simulating the kind of messy, real-world data encountered in financial environments.
 
@@ -15,7 +15,7 @@ This project demonstrates a complete data analytics pipeline built on a real-wor
 
 ---
 
-## 🗂️ Repository Structure
+## Repository Structure
 
 ```
 financial_transactions/
@@ -30,7 +30,7 @@ financial_transactions/
 
 ---
 
-## 🔍 Data Quality Issues Found
+## Data Quality Issues Found
 
 | Issue | Detail | Rows Affected |
 |---|---|---|
@@ -50,7 +50,7 @@ financial_transactions/
 | Missing values — Customer ID | Blank customer IDs | 4,878 |
 | Missing values — Transaction ID | Blank or missing IDs | 5,018 |
 
-### 🗓️ Deep Dive: Invalid Date Analysis
+###Deep Dive: Invalid Date Analysis
 
 During cleaning, `pd.to_datetime(errors='coerce')` flagged **63,381 records (64% of the dataset)** with impossible dates:
 
@@ -67,7 +67,7 @@ During cleaning, `pd.to_datetime(errors='coerce')` flagged **63,381 records (64%
 
 ---
 
-## 🧹 Cleaning Pipeline (Python)
+## Cleaning Pipeline (Python)
 
 ```python
 import pandas as pd
@@ -153,7 +153,7 @@ df['Customer_ID'] = df['Customer_ID'].fillna(df['Customer_ID'].mode()[0])
 
 ---
 
-## 🗄️ MySQL Export
+## MySQL Export
 
 ```python
 from sqlalchemy import create_engine
@@ -167,7 +167,7 @@ pd.read_sql("SELECT * FROM financial_transactions LIMIT 5;", engine)
 
 ---
 
-## 📊 SQL EDA (Key Queries)
+## SQL EDA (Key Queries)
 
 **Revenue by product — completed transactions only:**
 ```sql
@@ -229,7 +229,7 @@ ORDER BY Month;
 
 ---
 
-## 📈 Key Business Insights
+## Key Business Insights
 
 ### Revenue
 | Metric | Value |
@@ -269,7 +269,7 @@ ORDER BY Month;
 
 > Credit Card has the highest failure count (7,203) though proportionally all three methods fail at roughly the same rate (~16-17%).
 
-### Customer Anomaly 🚨
+### Customer Anomaly 
 | Customer | Revenue | Transactions |
 |---|---|---|
 | C2023 | $320,906,338 | 4,867 |
@@ -290,7 +290,7 @@ ORDER BY Month;
 
 ---
 
-## 🛠️ DAX Measures (Power BI)
+## DAX Measures (Power BI)
 
 ```dax
 Total Revenue =
@@ -323,7 +323,7 @@ DIVIDE(
 
 ---
 
-## ⚙️ Tools & Libraries
+## Tools & Libraries
 
 | Tool | Version | Purpose |
 |---|---|---|
@@ -333,23 +333,5 @@ DIVIDE(
 | MySQL | 8.0+ | Data storage and SQL EDA |
 | Power BI Desktop | Latest | Dashboard and DAX measures |
 
----
 
-## 🚀 How to Reproduce
-
-1. Clone this repo
-2. Install dependencies: `pip install pandas sqlalchemy pymysql`
-3. Create a MySQL database: `CREATE DATABASE financial_transactions_db;`
-4. Run the Jupyter notebook end-to-end
-5. Open Power BI Desktop → Get Data → MySQL → connect to `financial_transactions_db`
-6. Import the `financial_transactions` table and recreate the DAX measures above
-
----
-
-## 👤 Author
-
-**Dominic Mwasya**
-BSc Commerce (Accounting) — University of Nairobi
-ALX Africa Data Science Programme
-
-🔗 [GitHub](https://github.com/dominicmwasya) · 📊 Open to Data Analyst & Forensic Data Analyst roles in Nairobi
+🔗 [GitHub](https://github.com/dominicmwasya) · Open to Data Analyst & Forensic Data Analyst roles in Nairobi
