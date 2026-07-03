@@ -1,7 +1,7 @@
 #  Financial Transactions Performance Dashboard
 ### End-to-End Data Analytics Project | Python • MySQL • Power BI
 
-![Dashboard](financial_transactions/Dashboard)
+![Dashboard](Dashboard_preview.webp)
 
 ---
 
